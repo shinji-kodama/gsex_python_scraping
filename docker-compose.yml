@@ -1,0 +1,12 @@
+version: '3'
+services:
+  app:
+    # restart: always
+    build: .
+    container_name: 'app'
+    working_dir: '/root/practice'
+    tty: true
+    volumes:
+      - ./practice:/root/practice
+    ports:
+      - 80:5004
