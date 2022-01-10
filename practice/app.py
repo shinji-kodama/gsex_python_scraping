@@ -1,10 +1,8 @@
 import json
 from urllib.request import urlopen
-from random import shuffle
+from random import shuffle, choice
 from flask import Flask, render_template
 from bs4 import BeautifulSoup
-
-import random
 
 app = Flask(__name__)
 
@@ -22,7 +20,7 @@ def api_recommend_article():
     soup = BeautifulSoup(html, 'html.parser')
 
     articles = soup.select('.entrylist-contents-title a')
-    article = random.choice(articles)
+    article = choice(articles)
 
     return json.dumps({
         "content" : article.text,
@@ -32,7 +30,7 @@ def api_recommend_article():
 @app.route("/api/xxxx")
 def api_xxxx():
     """
-    こっちはこれからやります
+    こっちはこれから
         **** ここを実装します（発展課題） ****
         ・自分の好きなサイトをWebスクレイピングして情報をフロントに返却します
         ・お天気APIなども良いかも

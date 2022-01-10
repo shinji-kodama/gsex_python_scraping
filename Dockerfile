@@ -6,13 +6,16 @@ USER root
 # ENV LC_ALL ja_JP.UTF-8
 # ENV TZ JST-9
 # ENV TERM xterm 
+COPY requirements.txt /
 
 RUN apt-get update && \
-    apt-get install -y git && \
-    apt-get install -y vim less && \
+    # apt-get install -y git && \
+    # apt-get -y install locales && \
+    # apt-get install -y vim less && \
     pip3 install --upgrade pip && \
-    pip3 install --upgrade beautifulsoup4 && \
-    pip3 install --upgrade Flask
+    pip3 install --upgrade -r requirements.txt
+    # pip3 install --upgrade beautifulsoup4 && \
+    # pip3 install --upgrade Flask
     # pip3 install --upgrade setuptools && \
     # pip3 install --upgrade jupyterlab
     
